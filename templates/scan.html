@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!--<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -37,11 +37,97 @@
     <form id="urlForm" action="/scan" method="post">
         <label for="url">Enter URL:</label>
         <input type="text" id="url" name="url" required>
-        <button type="submit">Check URL</button>
+        <button type="submit" >Check URL</button>
     </form>
     {% if result %}
     <h2>Scan Result:</h2>
     <textarea readonly>{{ result }}</textarea>
     {% endif %}
+</body>
+</html>
+-->
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VirusTotal Checker</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-image: url('/static/images/scanner.jpg');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .container {
+            max-width: 600px;
+            padding: 20px;
+            background-color: rgba(255, 255, 255, 0.8);
+            border-radius: 10px;
+        }
+
+        h1 {
+            text-align: center;
+        }
+
+        form {
+            text-align: center;
+        }
+
+        input {
+            width: 100%;
+            padding: 10px;
+            margin-top: 10px;
+            box-sizing: border-box;
+        }
+
+        button {
+            padding: 10px 20px;
+            margin-top: 10px;
+            border: none;
+            background-color: #007bff;
+            color: #fff;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        textarea {
+            width: 100%;
+            height: 100px;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>VirusTotal Checker</h1>
+        <form id="urlForm" action="/scan" method="post">
+            <label for="url">Enter URL:</label>
+            <input type="text" id="url" name="url" required>
+            <button type="submit">Check URL</button>
+        </form>
+        {% if result %}
+        <h2>Scan Result:</h2>
+        <textarea readonly>{{ result }}</textarea>
+        {% endif %}
+
+
+
+        
+    </div>
+
 </body>
 </html>

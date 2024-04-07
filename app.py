@@ -9,8 +9,6 @@ import pygal
 from pygal.style import Style
 from IPy import IP
 import geoip2.database
-import json
-
 
 app=Flask(__name__)
 reader = geoip2.database.Reader(
@@ -22,7 +20,7 @@ def index1():
     return render_template('index.html')
 
 
-
+#for mail header
 @app.context_processor
 def utility_processor():
     def getCountryForIP(line):
@@ -48,8 +46,7 @@ def dateParser(line):
     try:
         r = dateutil.parser.parse(line, fuzzy=True)
 
-    # if the fuzzy parser failed to parse the line due to
-    # incorrect timezone information issue #5 GitHub
+   
     except ValueError:
         r = re.findall('^(.*?)\s*(?:\(|utc)', line, re.I)
         if r:
@@ -79,7 +76,7 @@ def utility_processor():
             if num
         )
     return dict(duration=duration)
-
+###end
 
 
 @app.route('/scan',methods=['POST'])
@@ -97,9 +94,9 @@ def scan():
 
     response = requests.post(url1, headers=headers, data=data)
 
-    data=response.json()
-    print(data)
-    urlres=data['data']['links']['self']
+    data1=response.json()
+    print(data1)
+    urlres=data1['data']['links']['self']
     urllist=urlres.split('-')
     url2='https://www.virustotal.com/api/v3/urls/'+urllist[1]
 
@@ -112,15 +109,17 @@ def scan():
     #url2='https://www.virustotal.com/api/v3/urls/f1970873b198cd5f287eea818c75ee5e323e3b597888f8459b149fed716b895c'
     res2=requests.get(url2,headers=headers)
     print(res2.json())
+    #important
     result=res2.json()
     return render_template('scan.html',result=result)
 
 
 
 
+
 @app.route('/contacts')
 def contacts():
-    return render_template('contacts.html')
+    return render_template('contact.html')
 
 #1. scanning using virusttal API
 @app.route('/scan')
@@ -130,8 +129,9 @@ def exploit():
 
 
 #mail header scanner
-
-
+##
+###
+####
 @app.route('/mha', methods=['GET', 'POST'])
 def index():
     if request.method == 'POST':
@@ -252,33 +252,7 @@ def index():
             n=n, chart=chart, security_headers=security_headers)
     else:
         return render_template('mailha.html')
-
-
-
-
-
-
-
-
-
-
-
-
 #end mail header
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
