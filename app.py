@@ -9,6 +9,7 @@ import pygal
 from pygal.style import Style
 from IPy import IP
 import geoip2.database
+import json
 
 
 app=Flask(__name__)
@@ -84,7 +85,7 @@ def utility_processor():
 @app.route('/scan',methods=['POST'])
 def scan():
     url_to_check = request.form['url']
-    url = "https://www.virustotal.com/api/v3/urls"
+    url1 = "https://www.virustotal.com/api/v3/urls"
 
     headers = {
         'x-apikey': 'd1e4ebcd51610c3a30f6c5857c5ff8d87f36991c3a69987fcda02d8499663ec2'
@@ -94,11 +95,21 @@ def scan():
         'url': url_to_check
     }
 
-    response = requests.post(url, headers=headers, data=data)
+    response = requests.post(url1, headers=headers, data=data)
 
-    print(response.json())
+    data=response.json()
+    print(data)
+    urlres=data['data']['links']['self']
+    urllist=urlres.split('-')
+    url2='https://www.virustotal.com/api/v3/urls/'+urllist[1]
 
-    url2='https://www.virustotal.com/api/v3/analyses/u-8e37037913be228f104bf84d947da511926f650c90a84966a3c24fe182229ba9-1710689658'
+
+
+    print("look here")
+    print("new\n\n\n\n")
+
+    #url2='https://www.virustotal.com/api/v3/analyses/u-8e37037913be228f104bf84d947da511926f650c90a84966a3c24fe182229ba9-1710689658'
+    #url2='https://www.virustotal.com/api/v3/urls/f1970873b198cd5f287eea818c75ee5e323e3b597888f8459b149fed716b895c'
     res2=requests.get(url2,headers=headers)
     print(res2.json())
     result=res2.json()
