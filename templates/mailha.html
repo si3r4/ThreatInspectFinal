@@ -6,7 +6,7 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    
+
     <meta name="description" content="">
     <meta name="author" content="">
     <title>Mail Header Analyzer (MHA) - Dark Mode</title>
@@ -18,61 +18,61 @@
     <link href="{{url_for('static', filename='css/flag-sprites.min.css')}}" rel="stylesheet" type="text/css" />
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.13.0/css/all.css" integrity="sha384-Bfad6CLCknfcloXFOyFnlgtENryhrpZCe29RTifKEixXQZ38WheV+i/6YWSzkz3V" crossorigin="anonymous">
     <style>
-    body {
-        background-color: #333;
-        color: #d4d4d4;
-    }
+        body {
+            background-color: #333;
+            color: #d4d4d4;
+        }
 
-    .navbar-inverse {
-        background-color: #333;
-    }
+        .navbar-inverse {
+            background-color: #333;
+        }
 
-    .well {
-        background-color: #444;
-        border: 1px solid #555;
-    }
+        .well {
+            background-color: #444;
+            border: 1px solid #555;
+        }
 
-    table {
-        background-color: #444;
-        color: #d4d4d4;
-    }
+        table {
+            background-color: #444;
+            color: #d4d4d4;
+        }
 
-    th {
-        background-color: #333333;
-        color: #d4d4d4;
-    }
+        th {
+            background-color: #333333;
+            color: #d4d4d4;
+        }
 
-    .panel-default {
-        background-color: #444;
-        border: 1px solid #555;
-        color: #d4d4d4;
-    }
+        .panel-default {
+            background-color: #444;
+            border: 1px solid #555;
+            color: #d4d4d4;
+        }
 
-    .btn-primary {
-        background-color: #2f81b3;
-        border-color: #2f81b3;
-    }
+        .btn-primary {
+            background-color: #2f81b3;
+            border-color: #2f81b3;
+        }
 
-    .panel-heading {
-        background-color: #333;
-        color: #d4d4d4;
-    }
+        .panel-heading {
+            background-color: #333;
+            color: #d4d4d4;
+        }
 
-    .form-control {
-        background-color: #222;
-        color: #d4d4d4;
-    }
+        .form-control {
+            background-color: #222;
+            color: #d4d4d4;
+        }
 
-    .btn-primary:hover {
-        background-color: #17659f;
-        border-color: #17659f;
-    }
+        .btn-primary:hover {
+            background-color: #17659f;
+            border-color: #17659f;
+        }
 
     </style>
 </head>
 
 <body>
-    
+
     <nav class="navbar navbar-inverse navbar-fixed-top">
         <div class="container-fluid">
             <div class="navbar-header">
@@ -85,10 +85,10 @@
                 </button>
                 <a class="navbar-brand" href="/">Mail Header Analyzer <small>(MHA)</small></a>
             </div>
-            
+
         </div>
     </nav>
-    
+
     <div class="container-fluid" style="padding-top: 50px;">
         {% if data %}
         <div class="well well-lg">
@@ -111,12 +111,6 @@
                         {% endif %}
                     </dl>
                 </div>
-                {% if delayed %}
-                <div class="col-md-6">
-                    {# <div id="chart_div"></div>#}
-                    {{ chart|safe }}
-                </div>
-                {% endif %}
             </div>
         </div>
         <table id="table" data-toggle="table" data-search="true" data-show-columns="true" data-striped="true"
@@ -137,27 +131,27 @@
                 <tr>
                     <td>{{ k }}</td>
                     <td>{{ v.Direction.0 }}{% if country(v.Direction.0).iso_code %}<span class="pull-right"><a href="#"
-                                data-toggle="tooltip" data-placement="top"
-                                title="{{country(v.Direction.0).country_name}}"><i
-                                    class="flag flag-{{country(v.Direction.0).iso_code}}"></i></a></span>{% endif %}
+                            data-toggle="tooltip" data-placement="top"
+                            title="{{country(v.Direction.0).country_name}}"><i
+                                class="flag flag-{{country(v.Direction.0).iso_code}}"></i></a></span>{% endif %}
                     </td>
                     <td>{{ v.Direction.1 }}{% if country(v.Direction.1).iso_code %}<span class="pull-right"><a href="#"
-                                data-toggle="tooltip" data-placement="top"
-                                title="{{country(v.Direction.1).country_name}}"><i
-                                    class="flag flag-{{country(v.Direction.1).iso_code}}"></i></a></span>{% endif %}
+                            data-toggle="tooltip" data-placement="top"
+                            title="{{country(v.Direction.1).country_name}}"><i
+                                class="flag flag-{{country(v.Direction.1).iso_code}}"></i></a></span>{% endif %}
                     </td>
                     <td>{{ v.Direction.2 }}</td>
                     <td>{{ v.Time }}</td>
                     <td>
                         {% if duration(v.Delay) %} {{ duration(v.Delay) }} {% else %} {% if loop.first %} *
-                        {% else %}0{% endif %} {% endif %}
+                            {% else %}0{% endif %} {% endif %}
                     </td>
                 </tr>
                 {% endfor %}
             </tbody>
         </table>
-        <div class="panel panel-default" style="margin-top: 10px;">
-            
+        <div class="panel panel-default" style="margin-top: 10px">
+
             <div class="panel-heading">
                 <h3 class="panel-title">Security Headers</h3>
             </div>
@@ -173,8 +167,8 @@
                 </table>
             </div>
         </div>
-        <div class="panel panel-default" style="margin-top: 10px;">
-            
+        <div class="panel panel-default" style="margin-top: 10px">
+
             <div class="panel-heading">
                 <h3 class="panel-title">X- headers</h3>
             </div>
@@ -190,8 +184,8 @@
                 </table>
             </div>
         </div>
-        <div class="panel panel-default" style="margin-top: 10px;">
-            
+        <div class="panel panel-default" style="margin-top: 10px">
+
             <div class="panel-heading">
                 <h3 class="panel-title">Other headers</h3>
             </div>
@@ -204,7 +198,7 @@
                         <td>{{ v }}</td>
                     </tr>
                     {% endif %} {% endfor %}
-                </table>
+                    </table>
             </div>
         </div>
         {% else %}
@@ -221,7 +215,7 @@
         </div>
         {% endif %}
     </div>
-    
+
     <script src="{{url_for('static', filename='js/jquery.min.js')}}"></script>
     <script src="{{url_for('static', filename='js/bootstrap.min.js')}}"></script>
     <script src="{{url_for('static', filename='js/ie10-viewport-bug-workaround.js')}}"></script>
@@ -233,5 +227,4 @@
         });
     </script>
 </body>
-
 </html>
