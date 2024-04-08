@@ -85,7 +85,7 @@ def scan():
     url1 = "https://www.virustotal.com/api/v3/urls"
 
     headers = {
-        'x-apikey': 'd1e4ebcd51610c3a30f6c5857c5ff8d87f36991c3a69987fcda02d8499663ec2'
+        'x-apikey': 'd1e4ebcd51610c3a309f6c5857c5ff8d87f36991c3a69987fcda02d8499663ec2'
     }
 
     data = {
