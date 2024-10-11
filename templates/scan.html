@@ -1,0 +1,54 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+    <title>URL Scanner</title>
+    <style>
+        .loading {
+            display: none;
+            text-align: center;
+        }
+
+        .loading img {
+            width: 100px;
+        }
+
+        .result-red {
+            color: red;
+        }
+
+        .result-green {
+            color: green;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>URL Scanner</h1>
+        <div class="loading" id="loading">
+            <p>Loading results...</p>
+        </div>
+        <form method="post" onsubmit="showLoading()">
+            <input type="text" name="url" placeholder="Enter URL" required>
+            <button type="submit">Scan</button>
+        </form>
+        <div class="results">
+            {% if results %}
+                <h2>Analysis Results</h2>
+                <ul>
+                {% for item in results %}
+                    <li class="{{ item.color_class }}"><strong>Engine:</strong> {{ item.engine_name }}, <strong>Category:</strong> {{ item.category }}, <strong>Result:</strong> {{ item.result }}</li>
+                {% endfor %}
+                </ul>
+            {% endif %}
+        </div>
+    </div>
+    <script>
+        function showLoading() {
+            document.getElementById("loading").style.display = "block";
+        }
+    </script>
+</body>
+</html>

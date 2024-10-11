@@ -1,0 +1,70 @@
+body {
+    background-image: url('../static/images/exploit.jpg'); /* Replace with your wallpaper URL */
+    background-size: cover;
+    min-height: 100vh; /* Change this from height to min-height */
+    color: white;
+    font-family: Arial, sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start; /* Change to flex-start to allow scrolling */
+    flex-direction: column;
+    overflow-y: auto; /* Allow vertical scrolling */
+}
+
+h1 {
+    text-align: center;
+}
+
+.container {
+    background-color: rgba(0, 0, 0, 0.7);
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+    max-width: 600px; /* Set a maximum width */
+    margin: 0 auto; /* Add some margin so it's not glued to the edge of the screen */
+}
+
+input[type="text"] {
+    padding: 10px;
+    width: 200px;
+    border: none;
+    border-radius: 5px;
+}
+
+button {
+    padding: 10px 15px;
+    background-color: #28a745;
+    border: none;
+    color: white;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #218838;
+}
+
+.loading {
+    display: none; /* Hidden by default */
+    font-size: 1.2em; /* Larger font for loading text */
+    text-align: center;
+    margin-top: 20px; /* Space above the loading indicator */
+}
+
+/* You can customize the loading animation below */
+.loading::before {
+    content: "";
+    border: 5px solid white; /* Circular border color */
+    border-top: 5px solid transparent; /* Top color must be transparent */
+    border-radius: 50%;
+    width: 30px;
+    height: 30px;
+    animation: spin 1s linear infinite; /* Spin animation */
+    display: inline-block; /* Necessary to show the animation */
+    margin-right: 10px; /* Space between the animation and the text */
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
